@@ -105,7 +105,7 @@ export const ClassroomView: React.FC<ClassroomViewProps> = ({
             </button>
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-            放學鐘聲已經響起，但 802 班英文老師把教室門給鎖上了！為了回家度過美好週末，請調查教室四個角落，解開國二生活英文謎題，蒐集
+            放學鐘聲已經響起，但 802 班英文老師把教室門給鎖上了！為了回家度過美好週末，請調查教室四個角落，解開國二生活英文與邏輯推理謎題，各題答案不直接顯示，需動腦思考推導出數值。蒐集
             <strong className="text-amber-400"> 4 枚黃金鑰匙碎片</strong> 與
             <strong className="text-emerald-400"> 大門磁卡</strong>，解開電子門禁逃脫！
           </p>

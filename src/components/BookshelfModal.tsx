@@ -100,59 +100,67 @@ export const BookshelfModal: React.FC<BookshelfModalProps> = ({
 
               {/* Stationery Counting Box */}
               <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-2.5">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
+                <div className="flex items-center justify-between border-b border-slate-850 pb-1.5">
                   <span className="text-xs font-bold text-slate-200">
-                    國二顏色與數量清點 (Count the Stationery)
+                    色彩文具分類與推理題目 (Stationery Clues)
                   </span>
                   <button
-                    onClick={() => soundManager.speak('Count the stationery items: Four red markers, seven blue clips, six green crayons, and five yellow highlighters.')}
+                    onClick={() => soundManager.speak('Stationery clues: Red markers, Blue clips, Green crayons, and Yellow highlighters. Count and calculate.')}
                     className="text-slate-400 hover:text-sky-300 cursor-pointer"
-                    title="朗讀英文文具"
+                    title="朗讀英文線索"
                   >
                     <Volume2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="space-y-2 text-xs">
                   {/* RED */}
-                  <div className="p-2.5 rounded-lg bg-rose-500/15 border border-rose-500/30 flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-rose-400 block">1. RED</span>
-                      <span className="text-[11px] text-slate-300">Markers (彩色筆)</span>
+                  <div className="p-2.5 rounded-lg bg-rose-500/10 border border-rose-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-rose-400">1. RED DIAL [Color & Shape]</span>
+                      <span className="text-[10px] text-slate-400">Markers</span>
                     </div>
-                    <span className="font-mono font-bold text-lg text-rose-300">4</span>
+                    <p className="text-slate-300 text-[11px]">
+                      "How many red markers? Hint: Equal to the number of sides on a square table." (正方形書桌有幾個邊？)
+                    </p>
                   </div>
 
                   {/* BLUE */}
-                  <div className="p-2.5 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-blue-400 block">2. BLUE</span>
-                      <span className="text-[11px] text-slate-300">Clips (迴紋針)</span>
+                  <div className="p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-blue-400">2. BLUE DIAL [Word Length]</span>
+                      <span className="text-[10px] text-slate-400">Clips</span>
                     </div>
-                    <span className="font-mono font-bold text-lg text-blue-300">7</span>
+                    <p className="text-slate-300 text-[11px]">
+                      "How many blue clips? Hint: Total letters in the day we leave school early: <strong className="text-blue-300">T-U-E-S-D-A-Y</strong>."
+                    </p>
                   </div>
 
                   {/* GREEN */}
-                  <div className="p-2.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-emerald-400 block">3. GREEN</span>
-                      <span className="text-[11px] text-slate-300">Crayons (粉蠟筆)</span>
+                  <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-emerald-400">3. GREEN DIAL [Math & Logic]</span>
+                      <span className="text-[10px] text-slate-400">Crayons</span>
                     </div>
-                    <span className="font-mono font-bold text-lg text-emerald-300">6</span>
+                    <p className="text-slate-300 text-[11px]">
+                      "How many green crayons? Hint: Half a dozen (12 ÷ 2 = ?)." (半打粉蠟筆是多少支？)
+                    </p>
                   </div>
 
                   {/* YELLOW */}
-                  <div className="p-2.5 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-between">
-                    <div>
-                      <span className="font-bold text-amber-400 block">4. YELLOW</span>
-                      <span className="text-[11px] text-slate-300">Highlighters (螢光筆)</span>
+                  <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-amber-400">4. YELLOW DIAL [Riddle]</span>
+                      <span className="text-[10px] text-slate-400">Highlighters</span>
                     </div>
-                    <span className="font-mono font-bold text-lg text-amber-300">5</span>
+                    <p className="text-slate-300 text-[11px]">
+                      "How many yellow highlighters? Hint: Fingers on your right hand, or points on a shining star."
+                    </p>
                   </div>
                 </div>
 
                 <p className="text-[11px] text-slate-400">
-                  按色彩順序排列密碼：<strong className="text-amber-400">RED → BLUE → GREEN → YELLOW</strong>
+                  按色彩滾輪順序輸入：<strong className="text-amber-400">RED → BLUE → GREEN → YELLOW</strong>
                 </p>
               </div>
             </div>
@@ -164,7 +172,7 @@ export const BookshelfModal: React.FC<BookshelfModalProps> = ({
                   文具櫃抽屜密碼鎖 (Cabinet Lock)
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  請按照紅、藍、綠、黃數量輸入密碼（提示：原版經典密碼為 4765）。
+                  請按照紅、藍、綠、黃四色推理出的數字撥動對應色彩滾輪。
                 </p>
               </div>
 

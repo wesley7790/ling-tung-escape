@@ -29,7 +29,7 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
   const handleShare = () => {
     soundManager.playClick();
-    const shareText = `🎉 我花了 ${timeFormatted} 成功逃出《嶺東中學國中部 802 班英文密室》！\n解開了課桌 6928、保險箱 3742、鐘樓窗台 705、文具櫃 4765，學會了國二必考校園英文單字！\n歡迎嶺東國中同學一起來挑戰！`;
+    const shareText = `🎉 我花了 ${timeFormatted} 成功逃出《嶺東中學國中部 802 班英文邏輯密室》！\n解開了課桌字謎、黑板自然推理、鐘樓時間幾何與文具櫃邏輯計算，完成了三道大門門禁考驗！\n歡迎嶺東國中部同學們一起來挑戰！`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(shareText);
       setCopied(true);

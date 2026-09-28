@@ -133,10 +133,10 @@ export const BlackboardModal: React.FC<BlackboardModalProps> = ({
               <div className="p-4 rounded-xl bg-yellow-100 text-slate-900 border border-yellow-300 shadow-md rotate-[1deg] relative">
                 <div className="flex items-center justify-between border-b border-yellow-200 pb-1 mb-2">
                   <span className="text-xs font-bold text-amber-900">
-                    國二生活英語與自然觀察小謎題
+                    國二生活英語與自然邏輯推理題
                   </span>
                   <button
-                    onClick={() => soundManager.speak('Number 1: Letters in the word SUN. Number 2: Days in a week. Number 3: Seasons in a year. Number 4: Eyes on a face.')}
+                    onClick={() => soundManager.speak('English logic riddles. Clue one: Letters in the yellow star at daytime. Clue two: How many days in one full week. Clue three: Four periods of the year: Spring, Summer, Fall, and Winter. Clue four: How many eyes can see the blackboard.')}
                     className="text-amber-800 hover:text-amber-950 cursor-pointer"
                     title="朗讀英文題目"
                   >
@@ -144,27 +144,35 @@ export const BlackboardModal: React.FC<BlackboardModalProps> = ({
                   </button>
                 </div>
 
-                <div className="space-y-1.5 text-xs text-slate-800">
-                  <p className="flex justify-between items-center bg-white/70 p-1.5 rounded">
-                    <span>1. Letters in the word <strong className="text-amber-800">"SUN"</strong> (太陽的英文字母數):</span>
-                    <span className="font-mono font-bold text-amber-900">3</span>
-                  </p>
-                  <p className="flex justify-between items-center bg-white/70 p-1.5 rounded">
-                    <span>2. Days in a <strong className="text-amber-800">week</strong> (一個禮拜有幾天):</span>
-                    <span className="font-mono font-bold text-amber-900">7</span>
-                  </p>
-                  <p className="flex justify-between items-center bg-white/70 p-1.5 rounded">
-                    <span>3. Seasons in a <strong className="text-amber-800">year</strong> (一年四季: 春夏秋冬):</span>
-                    <span className="font-mono font-bold text-amber-900">4</span>
-                  </p>
-                  <p className="flex justify-between items-center bg-white/70 p-1.5 rounded">
-                    <span>4. Eyes on a human <strong className="text-amber-800">face</strong> (臉上的眼睛數量):</span>
-                    <span className="font-mono font-bold text-amber-900">2</span>
-                  </p>
+                <div className="space-y-2 text-xs text-slate-800">
+                  <div className="bg-white/80 p-2 rounded border border-yellow-200">
+                    <span className="text-amber-900 font-bold block text-[11px]">Pin 1: Science & English</span>
+                    <p className="text-slate-700">
+                      "I shine bright during the day and warm the Earth. Letters in this 3-letter star name: <span className="font-semibold text-amber-800">S _ N</span>."
+                    </p>
+                  </div>
+                  <div className="bg-white/80 p-2 rounded border border-yellow-200">
+                    <span className="text-amber-900 font-bold block text-[11px]">Pin 2: Time & Calendar Logic</span>
+                    <p className="text-slate-700">
+                      "From Monday to Sunday, how many total days make up <span className="font-semibold text-amber-800">one whole week</span>?"
+                    </p>
+                  </div>
+                  <div className="bg-white/80 p-2 rounded border border-yellow-200">
+                    <span className="text-amber-900 font-bold block text-[11px]">Pin 3: Seasons of the Year</span>
+                    <p className="text-slate-700">
+                      "Spring brings flowers, Summer is hot, Autumn is cool, Winter is cold. Count the <span className="font-semibold text-amber-800">seasons in a year</span>."
+                    </p>
+                  </div>
+                  <div className="bg-white/80 p-2 rounded border border-yellow-200">
+                    <span className="text-amber-900 font-bold block text-[11px]">Pin 4: Human Anatomy & Logic</span>
+                    <p className="text-slate-700">
+                      "You have one nose and one mouth, but how many <span className="font-semibold text-amber-800">eyes</span> do you use to read English?"
+                    </p>
+                  </div>
                 </div>
 
                 <p className="text-[10px] text-amber-800 mt-2 text-right">
-                  依序輸入 4 個數字即可解鎖牆角暗格保險箱！
+                  依 1~4 題推理所得之數值依序輸入保險箱密碼！
                 </p>
               </div>
             </div>
@@ -176,7 +184,7 @@ export const BlackboardModal: React.FC<BlackboardModalProps> = ({
                   暗格電子保險箱 (Digital Wall Safe)
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  請點擊下方九宮格鍵盤輸入 4 位數密碼（提示：原版經典密碼為 3742）。
+                  請依四道英文邏輯推理題目，在鍵盤上輸入 4 位數 PIN 碼。
                 </p>
               </div>
 

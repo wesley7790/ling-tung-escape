@@ -105,40 +105,46 @@ export const WindowModal: React.FC<WindowModalProps> = ({
                 </div>
 
                 {/* Illustrated window elements */}
-                <div className="py-2 px-3 bg-slate-950/70 rounded-lg border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-bold text-amber-300 font-mono text-xs">
-                      7:30
+                <div className="py-2 px-3 bg-slate-950/70 rounded-lg border border-slate-800 space-y-2.5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center font-bold text-amber-300 font-mono text-xs shrink-0 mt-0.5">
+                      #1
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-200">早自習鐘響 (Morning Assembly)</span>
-                      <p className="text-[11px] text-slate-400">時針指在數字：<strong className="text-amber-400">7</strong></p>
+                      <span className="text-xs font-bold text-slate-200">早自習時間 (Morning Assembly Hour)</span>
+                      <p className="text-[11px] text-slate-300">
+                        「學校規定早上七點半 (7:30 AM) 開始早讀。取其<span className="text-amber-300 font-semibold">鐘面小時數 (Hour)</span>。」
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-400 flex items-center justify-center font-bold text-sky-300 font-mono text-sm">
-                      O
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-full bg-sky-500/20 border border-sky-400 flex items-center justify-center font-bold text-sky-300 font-mono text-xs shrink-0 mt-0.5">
+                      #2
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-200">窗台正中央的圓形掛飾 (The Circle)</span>
-                      <p className="text-[11px] text-slate-400">圓形代表數字：<strong className="text-sky-400">0</strong></p>
+                      <span className="text-xs font-bold text-slate-200">掛飾幾何符號 (The Geometric Ornament)</span>
+                      <p className="text-[11px] text-slate-300">
+                        「窗台正中央掛著空心圓形飾品 (Circle / Round shape)，外形在阿拉伯數字中代表什麼數？」
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center font-bold text-emerald-300 font-mono text-xs">
-                      5:00
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center font-bold text-emerald-300 font-mono text-xs shrink-0 mt-0.5">
+                      #3
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-200">下午放學鐘聲 (Dismissal Bell)</span>
-                      <p className="text-[11px] text-slate-400">時針指在數字：<strong className="text-emerald-400">5</strong></p>
+                      <span className="text-xs font-bold text-slate-200">放學鐘聲時刻 (Dismissal Bell Hour)</span>
+                      <p className="text-[11px] text-slate-300">
+                        「嶺東國二週五放學時間為下午 5:00 PM。取其<span className="text-emerald-300 font-semibold">12 小時制之時針指向數字</span>。」
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-3 text-[11px] text-slate-400 italic">
-                  * 窗戶拉繩掛飾由上而下串連：7 - 0 - 5
+                  * 窗台百葉窗拉繩掛飾由上而下串連：#1 早自習 ➔ #2 幾何圓 ➔ #3 放學鐘
                 </div>
               </div>
 
@@ -147,7 +153,7 @@ export const WindowModal: React.FC<WindowModalProps> = ({
                 <span className="font-semibold text-amber-300">國中生活英文補充：</span>
                 <p>
                   <strong>Morning assembly</strong> = 朝會早自習；<strong>Dismissal</strong> = 放學。
-                  嶺東國二學生每天期待的放學時刻就是下午 5:00！
+                  注意時鐘小時（Hour）與幾何形狀（Circle）的對應邏輯。
                 </p>
               </div>
             </div>
@@ -159,7 +165,7 @@ export const WindowModal: React.FC<WindowModalProps> = ({
                   窗台收納盒 (3-Digit Window Lockbox)
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  請輸入 3 位數密碼（提示：原版經典密碼為 705）。
+                  請將鐘樓時間與掛飾邏輯推理出的 3 位數字轉動至中央基準線。
                 </p>
               </div>
 

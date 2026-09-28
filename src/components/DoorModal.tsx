@@ -24,6 +24,7 @@ export const DoorModal: React.FC<DoorModalProps> = ({
 }) => {
   const [q1Answer, setQ1Answer] = useState<string | null>(null);
   const [q2Answer, setQ2Answer] = useState<string | null>(null);
+  const [q3Answer, setQ3Answer] = useState<string | null>(null);
   const [isKeyInserted, setIsKeyInserted] = useState<boolean>(false);
   const [isCardSwiped, setIsCardSwiped] = useState<boolean>(false);
   const [quizError, setQuizError] = useState<string | null>(null);
@@ -45,9 +46,9 @@ export const DoorModal: React.FC<DoorModalProps> = ({
   };
 
   const handleFinalOpen = () => {
-    if (q1Answer !== 'A' || q2Answer !== 'B') {
+    if (q1Answer !== 'A' || q2Answer !== 'B' || q3Answer !== 'C') {
       soundManager.playError();
-      setQuizError('英文通關問題還沒有答對喔！請再看一次嶺東校訓與放學問候語。');
+      setQuizError('英文邏輯考核尚未全對喔！請再仔細推理校訓、情境對話與邏輯關係。');
       return;
     }
 
@@ -174,12 +175,12 @@ export const DoorModal: React.FC<DoorModalProps> = ({
             </div>
 
             {/* Right: English Security Check */}
-            <div className="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-4">
+            <div className="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-3.5">
               <div>
                 <h4 className="font-bold text-base text-slate-100 flex items-center justify-between">
-                  <span>嶺東國二英文通關考核</span>
+                  <span>嶺東國二英文與邏輯門禁考核</span>
                   <button
-                    onClick={() => soundManager.speak('Final Ling Tung English security questions: School motto and weekend greeting.')}
+                    onClick={() => soundManager.speak('Final Ling Tung English security and logic questions.')}
                     className="text-slate-400 hover:text-sky-300 cursor-pointer"
                     title="朗讀英文題目"
                   >
@@ -187,20 +188,20 @@ export const DoorModal: React.FC<DoorModalProps> = ({
                   </button>
                 </h4>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  回答下列兩題國二生活英文即可開啟大門放學！
+                  完成三道國二英文與邏輯思考題，方可啟動大門電磁鎖！
                 </p>
               </div>
 
-              {/* Question 1 */}
+              {/* Question 1: School Motto */}
               <div className="space-y-1.5 text-xs">
                 <p className="font-semibold text-amber-300">
-                  Q1: 嶺東校訓「學以致用、誠以待人」的正確英文是？
+                  Q1 [校訓英語]: 嶺東校訓「學以致用、誠以待人」的正確英文表述是？
                 </p>
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   {[
                     { key: 'A', text: 'Apply what you learn, and treat others with sincerity.' },
-                    { key: 'B', text: 'Eat lunch quickly, and sleep under the table.' },
-                    { key: 'C', text: 'Play video games until late night.' },
+                    { key: 'B', text: 'Play video games until late night without doing homework.' },
+                    { key: 'C', text: 'Eat lunch in class and throw trash on the floor.' },
                   ].map((opt) => (
                     <button
                       key={opt.key}
@@ -223,16 +224,16 @@ export const DoorModal: React.FC<DoorModalProps> = ({
                 </div>
               </div>
 
-              {/* Question 2 */}
+              {/* Question 2: Friday Greeting */}
               <div className="space-y-1.5 text-xs">
                 <p className="font-semibold text-amber-300">
-                  Q2: 週五放學時，對老師與同學說什麼祝賀語最合適？
+                  Q2 [情境用語]: 週五下午 5:00 放學離校時，最得體的社交英文是？
                 </p>
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   {[
-                    { key: 'A', text: 'Happy Halloween!' },
-                    { key: 'B', text: 'Have a great weekend!' },
-                    { key: 'C', text: 'Good morning, teacher!' },
+                    { key: 'A', text: 'Trick or treat, give me something good to eat!' },
+                    { key: 'B', text: 'Have a great weekend, see you next Monday!' },
+                    { key: 'C', text: 'Good morning! Please open your book to page 1.' },
                   ].map((opt) => (
                     <button
                       key={opt.key}
@@ -242,6 +243,38 @@ export const DoorModal: React.FC<DoorModalProps> = ({
                       }}
                       className={`w-full p-2 rounded-lg text-left text-xs transition-colors cursor-pointer flex items-center gap-2 border ${
                         q2Answer === opt.key
+                          ? 'bg-amber-500/20 border-amber-500 text-amber-200 font-medium'
+                          : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
+                      }`}
+                    >
+                      <span className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center font-bold text-[10px] shrink-0">
+                        {opt.key}
+                      </span>
+                      <span>{opt.text}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Question 3: Logical Deduction */}
+              <div className="space-y-1.5 text-xs">
+                <p className="font-semibold text-amber-300">
+                  Q3 [邏輯推理]: "Teacher is in Classroom, Chef is in Kitchen, Doctor is in Hospital. Who uses a key to escape from 802?"
+                </p>
+                <div className="space-y-1">
+                  {[
+                    { key: 'A', text: 'The Pilot flying in the sky.' },
+                    { key: 'B', text: 'The Fish swimming in the sea.' },
+                    { key: 'C', text: 'The Student (you) going home for Friday afternoon!' },
+                  ].map((opt) => (
+                    <button
+                      key={opt.key}
+                      onClick={() => {
+                        soundManager.playClick();
+                        setQ3Answer(opt.key);
+                      }}
+                      className={`w-full p-2 rounded-lg text-left text-xs transition-colors cursor-pointer flex items-center gap-2 border ${
+                        q3Answer === opt.key
                           ? 'bg-amber-500/20 border-amber-500 text-amber-200 font-medium'
                           : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
                       }`}

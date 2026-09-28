@@ -43,7 +43,7 @@ export const DeskModal: React.FC<DeskModalProps> = ({
       onSolve();
     } else {
       soundManager.playError();
-      setErrorMsg('密碼不正確喔！請檢查撕破考卷上的四個單字字母數量。');
+      setErrorMsg('密碼不正確！請仔細觀察考卷上的四道單字邏輯線索進行推理。');
     }
   };
 
@@ -104,38 +104,54 @@ export const DeskModal: React.FC<DeskModalProps> = ({
                   GRADE 8 ENGLISH QUIZ
                 </div>
                 <h4 className="text-xs font-bold text-amber-900 mb-2 border-b border-amber-200 pb-1 flex items-center justify-between">
-                  <span>嶺東中學 國二隨堂單字練習紙 (破掉的半邊)</span>
+                  <span>嶺東中學 國二隨堂邏輯與單字解謎卷 (殘卷)</span>
                   <button
-                    onClick={() => soundManager.speak('Grade 8 English word length challenge: Pencil, Classroom, Desk, Notebook')}
+                    onClick={() => soundManager.speak('Grade 8 English logic puzzle. Clue one: You write with graphite. Clue two: Where we have English classes. Clue three: Furniture with drawers minus two. Clue four: A book for writing notes.')}
                     className="text-amber-800 hover:text-amber-950 cursor-pointer"
-                    title="朗讀英文"
+                    title="朗讀英文線索"
                   >
                     <Volume2 className="w-3.5 h-3.5" />
                   </button>
                 </h4>
                 <p className="text-xs text-slate-700 mb-2.5">
-                  「密碼盒上的 4 個數字，隱藏在四個校園生活單字的<span className="font-bold text-amber-900">字母數量</span>之中！」
+                  「這張殘缺的考卷隱藏著密碼盒的 4 位數。請先依英文謎題推理出單字，再依指示計算字母數量：」
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono font-semibold">
-                  <div className="p-2 bg-white/80 rounded border border-amber-200/80">
-                    <span className="text-amber-600 block text-[10px]">Digit 1:</span>
-                    <span className="text-slate-900 text-sm">PENCIL</span>
-                    <span className="text-[10px] text-slate-500 block">6 letters</span>
+                  <div className="p-2.5 bg-white/90 rounded border border-amber-200/80">
+                    <span className="text-amber-700 block text-[10px] font-bold">Digit 1 [Riddle]</span>
+                    <span className="text-slate-800 text-xs block font-sans">
+                      "I write with graphite, not ink. P _ _ _ _ L."
+                    </span>
+                    <span className="text-[10px] text-amber-900/80 font-mono mt-0.5 block">
+                      ➔ [Letter count of this word]
+                    </span>
                   </div>
-                  <div className="p-2 bg-white/80 rounded border border-amber-200/80">
-                    <span className="text-amber-600 block text-[10px]">Digit 2:</span>
-                    <span className="text-slate-900 text-sm">CLASSROOM</span>
-                    <span className="text-[10px] text-slate-500 block">9 letters</span>
+                  <div className="p-2.5 bg-white/90 rounded border border-amber-200/80">
+                    <span className="text-amber-700 block text-[10px] font-bold">Digit 2 [Riddle]</span>
+                    <span className="text-slate-800 text-xs block font-sans">
+                      "Where 802 students have class: C _ _ _ _ _ _ _ M."
+                    </span>
+                    <span className="text-[10px] text-amber-900/80 font-mono mt-0.5 block">
+                      ➔ [Total letters in this place name]
+                    </span>
                   </div>
-                  <div className="p-2 bg-white/80 rounded border border-amber-200/80">
-                    <span className="text-amber-600 block text-[10px]">Digit 3:</span>
-                    <span className="text-slate-900 text-sm">DESK - 2</span>
-                    <span className="text-[10px] text-slate-500 block">4 - 2 = 2 letters</span>
+                  <div className="p-2.5 bg-white/90 rounded border border-amber-200/80">
+                    <span className="text-amber-700 block text-[10px] font-bold">Digit 3 [Logic]</span>
+                    <span className="text-slate-800 text-xs block font-sans">
+                      "Letters in 'DESK' minus (Vowels in 'NOTEBOOK')"
+                    </span>
+                    <span className="text-[10px] text-amber-900/80 font-mono mt-0.5 block">
+                      ➔ [4 letters - 2 vowels (O, E)]
+                    </span>
                   </div>
-                  <div className="p-2 bg-white/80 rounded border border-amber-200/80">
-                    <span className="text-amber-600 block text-[10px]">Digit 4:</span>
-                    <span className="text-slate-900 text-sm">NOTEBOOK</span>
-                    <span className="text-[10px] text-slate-500 block">8 letters</span>
+                  <div className="p-2.5 bg-white/90 rounded border border-amber-200/80">
+                    <span className="text-amber-700 block text-[10px] font-bold">Digit 4 [Riddle]</span>
+                    <span className="text-slate-800 text-xs block font-sans">
+                      "Compound word: NOTE + BOOK = ?"
+                    </span>
+                    <span className="text-[10px] text-amber-900/80 font-mono mt-0.5 block">
+                      ➔ [Total number of letters]
+                    </span>
                   </div>
                 </div>
               </div>
@@ -148,7 +164,7 @@ export const DeskModal: React.FC<DeskModalProps> = ({
                   <span>橘色密碼盒 (4-Digit Combination Lock)</span>
                 </h4>
                 <p className="text-xs text-slate-400 mt-1">
-                  請依照撕破考卷提示，轉動滾輪輸入四位數密碼（提示：原版經典密碼為 6928）。
+                  轉動 4 個滾輪輸入推理出的密碼，解鎖取得暗藏的道具與碎片。
                 </p>
               </div>
 
