@@ -1,0 +1,8 @@
+{
+  "name": "Remix 我想放學回家！嶺東中學國中部英文密室逃脫",
+  "description": "專為嶺東中學國中二年級學生設計的互動式英文解謎密室逃脫遊戲（CEFR A1~A2程度），結合校園情境、生活英語與多層次提示系統。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
