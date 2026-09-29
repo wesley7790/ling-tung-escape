@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Scale, Sparkle } from 'lucide-react';
-import cleaningImg from '../assets/images/cleaning_corner_scale_1790651015323.jpg';
+import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Scale, Maximize2, Image as ImageIcon } from 'lucide-react';
+import cleaningPuzzleImg from '../assets/images/puzzle_cleaning_scales_v2_1790657440307.jpg';
 import { soundManager } from '../utils/audio';
 
 interface CleaningModalProps {
@@ -22,6 +22,7 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
 }) => {
   const [digits, setDigits] = useState<number[]>([0, 0, 0]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isZoomOpen, setIsZoomOpen] = useState<boolean>(false);
 
   if (!isOpen) return null;
 
@@ -43,21 +44,24 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
       onSolve();
     } else {
       soundManager.playError();
-      setErrorMsg('天平密碼不正確！請依據水杯、水桶與水箱的等量倍數重新推算。');
+      setErrorMsg('天平密碼不正確！請依據圖片中的天平等量關係（水杯、水桶、水箱）重新推算。');
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+      <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-900/90">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-400" />
             <h3 className="font-bold text-base text-slate-100 font-['Outfit'] flex items-center gap-2">
               <Scale className="w-4 h-4 text-blue-400" />
-              <span>調查衛生清潔角：天平容積推理 (The Cleaning Tool Scale)</span>
+              <span>調查衛生清潔角：天平容積圖像推理 (The Cleaning Scale Visual Riddle)</span>
             </h3>
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+              <ImageIcon className="w-3 h-3" /> 純圖片推理題
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -84,80 +88,80 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
         {/* Modal Body */}
         <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
-            {/* Left: Balance scale math clues */}
+            {/* Left: Pure Visual Image Puzzle */}
             <div className="space-y-3">
-              {/* Cleaning Photo */}
-              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+              {/* Highlight Badge */}
+              <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-cyan-950/60 border border-cyan-500/40 text-cyan-200 text-xs font-medium">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  <strong>【純圖片題目 · 無文字題幹】</strong> 請直接由圖像推理
+                </span>
+                <button
+                  onClick={() =>
+                    soundManager.speak(
+                      'Visual deduction puzzle. Look closely at the balance scales image. Deduce the numbers for the cup, the bucket, and the water tank to unlock the box.'
+                    )
+                  }
+                  className="text-cyan-300 hover:text-white cursor-pointer"
+                  title="朗讀提示"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {/* Cleaning Puzzle Image */}
+              <div className="relative rounded-xl overflow-hidden border-2 border-cyan-500/50 shadow-xl bg-slate-950 group">
                 <img
-                  src={cleaningImg}
-                  alt="嶺東中學教室衛生清潔角"
+                  src={cleaningPuzzleImg}
+                  alt="天平容積圖像推理題目"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-102 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
-                  嶺東 802 班衛生打掃角 · 容積天平與工具箱
+                <button
+                  onClick={() => setIsZoomOpen(true)}
+                  className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded-lg bg-slate-900/85 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 text-xs font-medium flex items-center gap-1.5 backdrop-blur-sm cursor-pointer shadow-lg transition-colors"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" /> 點擊放大查看圖片
+                </button>
+                <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan-300 border border-cyan-500/30">
+                  VISUAL PUZZLE #8
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-blue-950/40 border-2 border-blue-800/60 shadow-inner text-blue-100 space-y-3">
-                <div className="flex items-center justify-between border-b border-blue-800/60 pb-2">
-                  <div className="flex items-center gap-2">
-                    <Scale className="w-4 h-4 text-blue-300" />
-                    <span className="text-xs font-bold text-blue-300">
-                      天平與容積等式 (Mass & Volume Balance Clues)
-                    </span>
-                  </div>
-                  <button
-                    onClick={() =>
-                      soundManager.speak(
-                        'Cleaning balance clues. Clue 1: One cup equals three spoons of water. Clue 2: One bucket equals two cups. Clue 3: One big tank equals one bucket plus one cup.'
-                      )
-                    }
-                    className="text-blue-400 hover:text-white cursor-pointer"
-                    title="朗讀英文題目"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
+              {/* Visual Deduction Legend (NO text questions, purely mapping image items to digits) */}
+              <div className="p-3.5 rounded-xl bg-blue-950/40 border border-blue-800/60 shadow-inner text-blue-100 space-y-2.5">
+                <div className="flex items-center justify-between border-b border-blue-800/60 pb-1.5">
+                  <span className="text-xs font-bold text-blue-300 flex items-center gap-1.5">
+                    <Scale className="w-3.5 h-3.5" /> 密碼欄位對應圖示 (Image Symbol Legend)
+                  </span>
+                  <span className="text-[10px] text-cyan-400">由圖中天平推算</span>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  「清潔工具車上的工具箱鎖需依據三個容器的容積等式推導 3 位數密碼：」
-                </p>
-
-                <div className="space-y-2 text-xs">
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-blue-700/40">
-                    <span className="text-[10px] text-blue-400 font-bold block">Digit 1 [The Cup]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "1 Cleaning Cup contains exactly <strong className="text-blue-300">3</strong> spoons of liquid cleaner."
-                    </p>
+                <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-blue-700/50">
+                    <div className="text-[10px] text-blue-400 font-bold">第 1 位數</div>
+                    <div className="text-xl my-0.5">🥛</div>
+                    <div className="text-[11px] font-semibold text-slate-200">水杯 (Cup)</div>
+                    <div className="text-[10px] text-cyan-300/90 mt-0.5">圖中對應幾匙？</div>
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-blue-700/40">
-                    <span className="text-[10px] text-blue-400 font-bold block">Digit 2 [The Bucket]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "1 Mop Bucket equals the volume of <strong className="text-blue-300">2 Cups</strong> (3 × 2 = ?)"
-                    </p>
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-blue-700/50">
+                    <div className="text-[10px] text-blue-400 font-bold">第 2 位數</div>
+                    <div className="text-xl my-0.5">🪣</div>
+                    <div className="text-[11px] font-semibold text-slate-200">水桶 (Bucket)</div>
+                    <div className="text-[10px] text-cyan-300/90 mt-0.5">圖中等同幾匙？</div>
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-blue-700/40">
-                    <span className="text-[10px] text-blue-400 font-bold block">Digit 3 [The Big Tank]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "1 Water Tank equals <strong className="text-blue-300">1 Bucket + 1 Cup</strong> (6 + 3 = ?)"
-                    </p>
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-blue-700/50">
+                    <div className="text-[10px] text-blue-400 font-bold">第 3 位數</div>
+                    <div className="text-xl my-0.5">🛢️</div>
+                    <div className="text-[11px] font-semibold text-slate-200">水箱 (Tank)</div>
+                    <div className="text-[10px] text-cyan-300/90 mt-0.5">圖中等同幾匙？</div>
                   </div>
                 </div>
 
-                <p className="text-[10px] text-blue-400/80 italic text-right">
-                  * 依序組合：Cup ➔ Bucket ➔ Tank
-                </p>
-              </div>
-
-              {/* Note */}
-              <div className="p-3 bg-slate-800/60 rounded-xl border border-slate-700 text-xs text-slate-300 space-y-1">
-                <span className="font-semibold text-blue-300">國中生活英文補充：</span>
-                <p>
-                  <strong>Cup</strong> = 水杯；<strong>Bucket</strong> = 水桶；<strong>Tank</strong> = 大水箱。
+                <p className="text-[11px] text-slate-400 text-center pt-1">
+                  💡 無文字題幹：請直接看圖中天平天秤兩端的數量關係，依序輸入三位數密碼。
                 </p>
               </div>
             </div>
@@ -165,11 +169,16 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
             {/* Right: 3-Digit Tumbler Lock */}
             <div className="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-5">
               <div>
-                <h4 className="font-bold text-base text-slate-100">
-                  清潔工具箱鎖 (3-Digit Tool Lock)
-                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-bold text-base text-slate-100">
+                    清潔工具箱鎖 (3-Digit Tool Lock)
+                  </h4>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                    圖像推導
+                  </span>
+                </div>
                 <p className="text-xs text-slate-400 mt-1">
-                  請將容積推理出的 3 位數字轉動至中央刻度。
+                  請將由天平圖像推理出的 3 位數字轉動至中央刻度。
                 </p>
               </div>
 
@@ -235,7 +244,7 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
 
               <div className="text-[11px] text-slate-400 border-t border-slate-850 pt-3 flex items-center justify-between">
                 <span>嶺東中學國中部 802 衛生角</span>
-                <span>CEFR A2 容積等式與生活數學</span>
+                <span>圖像等式邏輯推理 (Visual Logic)</span>
               </div>
             </div>
           </div>
@@ -254,6 +263,30 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Image Lightbox Zoom Modal */}
+      {isZoomOpen && (
+        <div className="fixed inset-0 z-60 bg-black/90 flex flex-col items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full bg-slate-900 rounded-xl overflow-hidden border border-cyan-500/50 shadow-2xl p-2">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800">
+              <span className="text-xs font-bold text-cyan-300">
+                🔍 放大觀察：天平容積圖像題目 (Visual Deduction Puzzle)
+              </span>
+              <button
+                onClick={() => setIsZoomOpen(false)}
+                className="p-1 rounded bg-slate-800 text-slate-300 hover:text-white cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <img
+              src={cleaningPuzzleImg}
+              alt="天平容積圖像題目大圖"
+              className="w-full max-h-[75vh] object-contain rounded mt-2"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Bug, Leaf } from 'lucide-react';
-import scienceImg from '../assets/images/science_corner_vivarium_1790651029926.jpg';
+import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Bug, Maximize2, Image as ImageIcon } from 'lucide-react';
+import sciencePuzzleImg from '../assets/images/puzzle_science_creatures_1790657455875.jpg';
 import { soundManager } from '../utils/audio';
 
 interface ScienceModalProps {
@@ -22,6 +22,7 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
 }) => {
   const [digits, setDigits] = useState<number[]>([0, 0, 0, 0]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isZoomOpen, setIsZoomOpen] = useState<boolean>(false);
 
   if (!isOpen) return null;
 
@@ -43,21 +44,24 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
       onSolve();
     } else {
       soundManager.playError();
-      setErrorMsg('生態密碼不正確！請依據四種生物的腿部數量（昆蟲、蜘蛛、蛇、犬）重新推理。');
+      setErrorMsg('生態密碼不正確！請依據圖片中四種生物標本的腿部數量（螞蟻、蜘蛛、蛇、犬）重新觀察。');
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+      <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800 bg-slate-900/90">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-lime-400" />
             <h3 className="font-bold text-base text-slate-100 font-['Outfit'] flex items-center gap-2">
               <Bug className="w-4 h-4 text-lime-400" />
-              <span>調查自然生態角：生物足數推理 (The Science Vivarium Lock)</span>
+              <span>調查自然生態角：生物足數圖像推理 (The Vivarium Specimen Visual Riddle)</span>
             </h3>
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-lime-500/20 text-lime-300 border border-lime-500/40">
+              <ImageIcon className="w-3 h-3" /> 純圖片推理題
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -84,87 +88,87 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
         {/* Modal Body */}
         <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
-            {/* Left: Vivarium Biology Clues */}
+            {/* Left: Pure Visual Specimen Riddle */}
             <div className="space-y-3">
-              {/* Science Photo */}
-              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+              {/* Highlight Badge */}
+              <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-lime-950/60 border border-lime-500/40 text-lime-200 text-xs font-medium">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+                  <strong>【純圖片題目 · 無文字題幹】</strong> 請直接觀察標本圖
+                </span>
+                <button
+                  onClick={() =>
+                    soundManager.speak(
+                      'Visual deduction puzzle. Look at the four animal specimens in the picture. Count the legs of each creature from box 1 to 4 to find the four-digit passcode.'
+                    )
+                  }
+                  className="text-lime-300 hover:text-white cursor-pointer"
+                  title="朗讀提示"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {/* Science Puzzle Image */}
+              <div className="relative rounded-xl overflow-hidden border-2 border-lime-500/50 shadow-xl bg-slate-950 group">
                 <img
-                  src={scienceImg}
-                  alt="嶺東中學自然生態角"
+                  src={sciencePuzzleImg}
+                  alt="生物足數圖像推理標本"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover aspect-[4/3] group-hover:scale-102 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
-                  嶺東 802 班自然生態角 · 昆蟲生態箱與標本鎖盒
+                <button
+                  onClick={() => setIsZoomOpen(true)}
+                  className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded-lg bg-slate-900/85 hover:bg-slate-800 text-lime-300 border border-lime-500/40 text-xs font-medium flex items-center gap-1.5 backdrop-blur-sm cursor-pointer shadow-lg transition-colors"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" /> 放大觀察生物標本圖
+                </button>
+                <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-lime-300 border border-lime-500/30">
+                  VISUAL PUZZLE #9
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-lime-950/40 border-2 border-lime-800/60 shadow-inner text-lime-100 space-y-3">
-                <div className="flex items-center justify-between border-b border-lime-800/60 pb-2">
-                  <div className="flex items-center gap-2">
-                    <Leaf className="w-4 h-4 text-lime-300" />
-                    <span className="text-xs font-bold text-lime-300">
-                      自然科學角生物足數觀察表 (Creature Legs Clues)
-                    </span>
-                  </div>
-                  <button
-                    onClick={() =>
-                      soundManager.speak(
-                        'Animal biology logic riddles. Digit 1: How many legs does an ant have? Digit 2: How many legs does a spider have? Digit 3: How many legs does a snake have? Digit 4: How many legs does a dog have?'
-                      )
-                    }
-                    className="text-lime-400 hover:text-white cursor-pointer"
-                    title="朗讀英文題目"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
+              {/* Visual Deduction Legend (NO text questions, purely mapping image items to digits) */}
+              <div className="p-3.5 rounded-xl bg-lime-950/40 border border-lime-800/60 shadow-inner text-lime-100 space-y-2.5">
+                <div className="flex items-center justify-between border-b border-lime-800/60 pb-1.5">
+                  <span className="text-xs font-bold text-lime-300 flex items-center gap-1.5">
+                    <Bug className="w-3.5 h-3.5" /> 觀察箱標本欄位索引 (Creature Specimen Index)
+                  </span>
+                  <span className="text-[10px] text-lime-400">數數看圖中各生物的腿 (Legs)</span>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  「觀察箱上的生物安全鎖由四種不同動物的 <strong className="text-lime-300 font-bold">腿（Legs）的數量</strong> 構成：」
-                </p>
-
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-lime-700/40">
-                    <span className="text-[10px] text-lime-400 font-bold block">Digit 1 [Insect]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "How many legs does an <strong className="text-lime-300">Ant</strong> (insect) have?" (昆蟲共有幾隻腳？)
-                    </p>
+                <div className="grid grid-cols-4 gap-2 text-center text-xs">
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-lime-700/50">
+                    <div className="text-[10px] text-lime-400 font-bold">#1 標本</div>
+                    <div className="text-xl my-0.5">🐜</div>
+                    <div className="text-[11px] font-semibold text-slate-200">Ant (昆蟲)</div>
+                    <div className="text-[10px] text-lime-300/90 mt-0.5">幾隻腳？</div>
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-lime-700/40">
-                    <span className="text-[10px] text-lime-400 font-bold block">Digit 2 [Arachnid]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "How many legs does a <strong className="text-lime-300">Spider</strong> have?" (蜘蛛共有幾隻腳？)
-                    </p>
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-lime-700/50">
+                    <div className="text-[10px] text-lime-400 font-bold">#2 標本</div>
+                    <div className="text-xl my-0.5">🕷️</div>
+                    <div className="text-[11px] font-semibold text-slate-200">Spider (蜘蛛)</div>
+                    <div className="text-[10px] text-lime-300/90 mt-0.5">幾隻腳？</div>
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-lime-700/40">
-                    <span className="text-[10px] text-lime-400 font-bold block">Digit 3 [Reptile]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "How many legs does a <strong className="text-lime-300">Snake</strong> have?" (蛇有幾隻腳？)
-                    </p>
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-lime-700/50">
+                    <div className="text-[10px] text-lime-400 font-bold">#3 標本</div>
+                    <div className="text-xl my-0.5">🐍</div>
+                    <div className="text-[11px] font-semibold text-slate-200">Snake (蛇)</div>
+                    <div className="text-[10px] text-lime-300/90 mt-0.5">幾隻腳？</div>
                   </div>
 
-                  <div className="p-2.5 rounded bg-slate-900/80 border border-lime-700/40">
-                    <span className="text-[10px] text-lime-400 font-bold block">Digit 4 [Mammal]:</span>
-                    <p className="text-slate-200 mt-0.5">
-                      "How many legs does a <strong className="text-lime-300">Dog or Cat</strong> walk on?" (狗或貓有幾隻腳？)
-                    </p>
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-lime-700/50">
+                    <div className="text-[10px] text-lime-400 font-bold">#4 標本</div>
+                    <div className="text-xl my-0.5">🐕</div>
+                    <div className="text-[11px] font-semibold text-slate-200">Dog (犬)</div>
+                    <div className="text-[10px] text-lime-300/90 mt-0.5">幾隻腳？</div>
                   </div>
                 </div>
 
-                <p className="text-[10px] text-lime-400/80 italic text-right">
-                  * 依序組合：Ant ➔ Spider ➔ Snake ➔ Dog
-                </p>
-              </div>
-
-              {/* Note */}
-              <div className="p-3 bg-slate-800/60 rounded-xl border border-slate-700 text-xs text-slate-300 space-y-1">
-                <span className="font-semibold text-lime-300">國中自然生活英文補充：</span>
-                <p>
-                  <strong>Insect (昆蟲)</strong> = 6 legs；<strong>Arachnid (蜘蛛)</strong> = 8 legs；<strong>Snake (蛇)</strong> = 0 legs。
+                <p className="text-[11px] text-slate-400 text-center pt-1">
+                  💡 無文字題幹：請直接由上方標本圖像計算腿部數量，依序 1 ➔ 2 ➔ 3 ➔ 4 輸入密碼。
                 </p>
               </div>
             </div>
@@ -172,11 +176,16 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
             {/* Right: 4-Digit Tumbler Lock */}
             <div className="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-5">
               <div>
-                <h4 className="font-bold text-base text-slate-100">
-                  生物箱密碼滾輪 (4-Digit Vivarium Lock)
-                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-bold text-base text-slate-100">
+                    生物箱密碼滾輪 (4-Digit Vivarium Lock)
+                  </h4>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-lime-500/10 text-lime-400 border border-lime-500/30">
+                    圖像推導
+                  </span>
+                </div>
                 <p className="text-xs text-slate-400 mt-1">
-                  請將四種動物足數推理出的 4 位數轉動至中央。
+                  請將由標本圖片觀察出的 4 位數轉動至中央。
                 </p>
               </div>
 
@@ -209,8 +218,8 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
                         >
                           <ChevronUp className="w-5 h-5" />
                         </button>
-                        <div className="w-12 h-16 sm:w-14 sm:h-18 rounded-lg bg-gradient-to-b from-lime-700 to-lime-900 border-2 border-lime-400/80 flex items-center justify-center shadow-lg">
-                          <span className="font-mono text-2xl sm:text-3xl font-bold text-white tabular-nums drop-shadow">
+                        <div className="w-12 sm:w-14 h-20 rounded-lg bg-gradient-to-b from-lime-800 to-slate-900 border-2 border-lime-400/80 flex items-center justify-center shadow-lg">
+                          <span className="font-mono text-3xl font-bold text-white tabular-nums drop-shadow">
                             {digit}
                           </span>
                         </div>
@@ -242,7 +251,7 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
 
               <div className="text-[11px] text-slate-400 border-t border-slate-850 pt-3 flex items-center justify-between">
                 <span>嶺東中學國中部 802 自然角</span>
-                <span>CEFR A1~A2 生物常識與數字推理</span>
+                <span>生物圖像特徵推理 (Visual Biology)</span>
               </div>
             </div>
           </div>
@@ -261,6 +270,30 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Image Lightbox Zoom Modal */}
+      {isZoomOpen && (
+        <div className="fixed inset-0 z-60 bg-black/90 flex flex-col items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full bg-slate-900 rounded-xl overflow-hidden border border-lime-500/50 shadow-2xl p-2">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-slate-800">
+              <span className="text-xs font-bold text-lime-300">
+                🔍 放大觀察：自然生態標本圖像題目 (Visual Specimen Riddle)
+              </span>
+              <button
+                onClick={() => setIsZoomOpen(false)}
+                className="p-1 rounded bg-slate-800 text-slate-300 hover:text-white cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <img
+              src={sciencePuzzleImg}
+              alt="生物足數圖像題目大圖"
+              className="w-full max-h-[75vh] object-contain rounded mt-2"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

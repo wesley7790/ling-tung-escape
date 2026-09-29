@@ -341,17 +341,17 @@ export const PUZZLES: Record<string, PuzzleData> = {
     hints: [
       {
         level: 1,
-        titleZh: '觀察提示',
-        titleEn: 'Observation Clue',
-        contentZh: '圖書角的四色文具櫃有四個不同顏色的撥碼滾輪：紅 (RED)、藍 (BLUE)、綠 (GREEN)、黃 (YELLOW)。旁邊有分類推理線索。',
-        contentEn: 'Check the stationery cabinet with 4 colored dials: Red, Blue, Green, Yellow. Read the clue cards.',
+        titleZh: '純圖片題觀察提示',
+        titleEn: 'Visual Observation Clue',
+        contentZh: '【純圖片推理題 · 無文字題幹】請點擊「放大查看文具圖片」，直接數出圖片中紅、藍、綠、黃四個收納格裡的文具數量。',
+        contentEn: 'This is a pure image puzzle! Click to enlarge the image and count items in the 4 colored compartments.',
       },
       {
         level: 2,
-        titleZh: '國二生活英語與數學推理指引',
-        titleEn: 'English & Math Logic Breakdown',
-        contentZh: '四個滾輪的計算依據：\n1. RED [正方形邊數 Sides of a square table] ➔ 4\n2. BLUE [T-U-E-S-D-A-Y 字母總數] ➔ 7\n3. GREEN [半打粉蠟筆 Half a dozen: 12 ÷ 2] ➔ 6\n4. YELLOW [一隻手的手指數或五角星頂點] ➔ 5',
-        contentEn: 'Solve each dial: Red = 4 sides. Blue = 7 letters in TUESDAY. Green = half a dozen (6). Yellow = 5 fingers.',
+        titleZh: '四色文具格數量對照指引',
+        titleEn: 'Color Compartment Count Breakdown',
+        contentZh: '依圖片收納格順序數出數量：\n1. RED [紅色格內麥克筆] ➔ 4 支\n2. BLUE [藍色格內迴紋針] ➔ 7 個\n3. GREEN [綠色格內粉蠟筆] ➔ 6 支\n4. YELLOW [黃色格內螢光筆] ➔ 5 支',
+        contentEn: 'Count directly from the picture: Red Markers = 4, Blue Clips = 7, Green Crayons = 6, Yellow Highlighters = 5.',
       },
       {
         level: 3,
@@ -465,17 +465,17 @@ export const PUZZLES: Record<string, PuzzleData> = {
     hints: [
       {
         level: 1,
-        titleZh: '觀察提示',
-        titleEn: 'Observation Clue',
-        contentZh: '打掃工具推車旁的密碼鎖箱標記著三種清潔容器：水杯 (Cup)、水桶 (Bucket)、大水箱 (Tank) 的重量推理。',
-        contentEn: 'The cleaning cart lockbox features a mass balance puzzle with cups, buckets, and water tanks.',
+        titleZh: '純圖片題觀察提示',
+        titleEn: 'Visual Observation Clue',
+        contentZh: '【純圖片推理題 · 無文字題幹】請點擊「放大查看圖片」，直接由圖片中的三架天平平衡關係推導出水杯 (Cup)、水桶 (Bucket)、大水箱 (Tank) 各代表的數值。',
+        contentEn: 'This is a pure image puzzle! Click to enlarge the balance scale diagram to find the 3-digit code.',
       },
       {
         level: 2,
-        titleZh: '天平倍數與英文邏輯指引',
-        titleEn: 'Scale Logic Breakdown',
-        contentZh: '推理 3 位數數值：\n1. "1 Cup has 3 spoons of water" ➔ 第一位數為 3\n2. "1 Bucket equals 2 Cups: 3 × 2 = ?" ➔ 第二位數為 6\n3. "1 Big Tank equals 1 Bucket (6) + 1 Cup (3) = ?" ➔ 第三位數為 9',
-        contentEn: 'Solve the scale: Cup = 3. Bucket = 3 * 2 = 6. Tank = 6 + 3 = 9. Total code = 369.',
+        titleZh: '天平圖像等式推理指引',
+        titleEn: 'Scale Image Logic Breakdown',
+        contentZh: '由圖片天平推導 3 位數數值：\n1. 第 1 架天平：1 個水杯 (Cup) 平衡 3 匙水 ➔ 第一位數為 3\n2. 第 2 架天平：1 個水桶 (Bucket) 平衡 2 個水杯 (3 × 2) ➔ 第二位數為 6\n3. 第 3 架天平：1 個大水箱 (Tank) 平衡 1 水桶 + 1 水杯 (6 + 3) ➔ 第三位數為 9',
+        contentEn: 'Deduce from image: Cup = 3. Bucket = 2 Cups = 6. Tank = Bucket + Cup = 9. Total code = 369.',
       },
       {
         level: 3,
@@ -496,17 +496,17 @@ export const PUZZLES: Record<string, PuzzleData> = {
     hints: [
       {
         level: 1,
-        titleZh: '觀察提示',
-        titleEn: 'Observation Clue',
-        contentZh: '窗邊自然生態觀察箱展示著昆蟲與動植物標本，四位數密碼鎖標註著四種不同生物的腳（Legs）的數量。',
-        contentEn: 'The biology vivarium lock requires counting the legs of 4 different creatures.',
+        titleZh: '純圖片題觀察提示',
+        titleEn: 'Visual Observation Clue',
+        contentZh: '【純圖片推理題 · 無文字題幹】請點擊「放大觀察生物標本圖」，直接數出圖片中 1 到 4 號展示盒內生物的腿（Legs）的數量。',
+        contentEn: 'This is a pure image puzzle! Enlarge the specimen picture and count legs for specimens 1 to 4.',
       },
       {
         level: 2,
-        titleZh: '國二生物與自然英文推理指引',
-        titleEn: 'Animal Biology Deduction Breakdown',
-        contentZh: '四道生物英文腳數推理：\n1. "How many legs does an Ant (insect) have?" ➔ 6 隻腳 (昆蟲三對足)\n2. "How many legs does a Spider (arachnid) have?" ➔ 8 隻腳 (蜘蛛四對足)\n3. "How many legs does a Snake (reptile) have?" ➔ 0 隻腳 (蛇沒有腳)\n4. "How many legs does a Dog or Cat have?" ➔ 4 隻腳 (四足哺乳類)',
-        contentEn: 'Deduce creature legs: Ant = 6, Spider = 8, Snake = 0, Dog = 4. Code = 6804.',
+        titleZh: '標本圖像足數對照指引',
+        titleEn: 'Animal Specimen Leg Count Breakdown',
+        contentZh: '依圖片 1 至 4 號展示盒數出腳數：\n1. #1 標本 [Ant 螞蟻/昆蟲] ➔ 6 隻腳\n2. #2 標本 [Spider 蜘蛛/節肢] ➔ 8 隻腳\n3. #3 標本 [Snake 蛇類/爬蟲] ➔ 0 隻腳\n4. #4 標本 [Dog 家犬/四足哺乳] ➔ 4 隻腳',
+        contentEn: 'Count directly from the picture: #1 Ant = 6, #2 Spider = 8, #3 Snake = 0, #4 Dog = 4. Code = 6804.',
       },
       {
         level: 3,
