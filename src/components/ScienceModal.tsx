@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Bug, Leaf } from 'lucide-react';
+import scienceImg from '../assets/images/science_corner_vivarium_1790651029926.jpg';
 import { soundManager } from '../utils/audio';
 
 interface ScienceModalProps {
@@ -85,6 +86,20 @@ export const ScienceModal: React.FC<ScienceModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Vivarium Biology Clues */}
             <div className="space-y-3">
+              {/* Science Photo */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={scienceImg}
+                  alt="嶺東中學自然生態角"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  嶺東 802 班自然生態角 · 昆蟲生態箱與標本鎖盒
+                </div>
+              </div>
+
               <div className="p-4 rounded-xl bg-lime-950/40 border-2 border-lime-800/60 shadow-inner text-lime-100 space-y-3">
                 <div className="flex items-center justify-between border-b border-lime-800/60 pb-2">
                   <div className="flex items-center gap-2">

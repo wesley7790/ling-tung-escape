@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, ClipboardList } from 'lucide-react';
+import bulletinImg from '../assets/images/bulletin_board_duty_1790650989074.jpg';
 import { soundManager } from '../utils/audio';
 
 interface BulletinModalProps {
@@ -89,6 +90,20 @@ export const BulletinModal: React.FC<BulletinModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Bulletin Board Clues */}
             <div className="space-y-3">
+              {/* Bulletin Photo */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={bulletinImg}
+                  alt="嶺東中學教室後方公佈欄"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  嶺東 802 班後方公佈欄 · 榮譽榜與值日輪盤鎖
+                </div>
+              </div>
+
               <div className="p-4 rounded-xl bg-amber-950/30 border-2 border-amber-800/60 shadow-inner text-amber-100 space-y-3">
                 <div className="flex items-center justify-between border-b border-amber-800/60 pb-2">
                   <span className="text-xs font-bold text-amber-300">

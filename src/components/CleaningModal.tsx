@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles, Scale, Sparkle } from 'lucide-react';
+import cleaningImg from '../assets/images/cleaning_corner_scale_1790651015323.jpg';
 import { soundManager } from '../utils/audio';
 
 interface CleaningModalProps {
@@ -85,6 +86,20 @@ export const CleaningModal: React.FC<CleaningModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Balance scale math clues */}
             <div className="space-y-3">
+              {/* Cleaning Photo */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={cleaningImg}
+                  alt="嶺東中學教室衛生清潔角"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  嶺東 802 班衛生打掃角 · 容積天平與工具箱
+                </div>
+              </div>
+
               <div className="p-4 rounded-xl bg-blue-950/40 border-2 border-blue-800/60 shadow-inner text-blue-100 space-y-3">
                 <div className="flex items-center justify-between border-b border-blue-800/60 pb-2">
                   <div className="flex items-center gap-2">

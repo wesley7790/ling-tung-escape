@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, Delete, Tablet, Sparkles } from 'lucide-react';
+import podiumImg from '../assets/images/podium_smart_tablet_1790650960248.jpg';
 import { soundManager } from '../utils/audio';
 
 interface PodiumModalProps {
@@ -94,6 +95,20 @@ export const PodiumModal: React.FC<PodiumModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Tablet Screen UI with 4 logical clues */}
             <div className="space-y-3">
+              {/* Tablet Photo */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={podiumImg}
+                  alt="嶺東中學講台智慧平板"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  嶺東 802 班講台 · 教師專用智慧平板電腦
+                </div>
+              </div>
+
               <div className="p-4 rounded-xl bg-slate-950 border-2 border-cyan-500/40 shadow-inner text-cyan-100 font-mono space-y-3">
                 <div className="flex items-center justify-between border-b border-cyan-900/60 pb-2">
                   <div className="flex items-center gap-2">

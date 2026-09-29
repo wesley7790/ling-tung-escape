@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, Delete, Sparkles } from 'lucide-react';
+import blackboardImg from '../assets/images/blackboard_wall_safe_1790650945915.jpg';
 import { soundManager } from '../utils/audio';
 
 interface BlackboardModalProps {
@@ -93,6 +94,20 @@ export const BlackboardModal: React.FC<BlackboardModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Blackboard & Sticky Note */}
             <div className="space-y-3">
+              {/* Blackboard Image */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={blackboardImg}
+                  alt="嶺東中學教室黑板與保險箱"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  嶺東中學 802 班講台黑板 · 牆角暗格電子保險箱
+                </div>
+              </div>
+
               {/* Blackboard container */}
               <div className="p-4 rounded-xl bg-emerald-950 border-4 border-amber-900/80 shadow-inner text-emerald-100 font-mono">
                 <div className="border-b border-emerald-800/80 pb-2 mb-3 flex items-center justify-between">

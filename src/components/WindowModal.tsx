@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Volume2, CheckCircle2, AlertCircle, HelpCircle, ChevronUp, ChevronDown, Sparkles } from 'lucide-react';
+import windowImg from '../assets/images/clock_tower_window_1790650975415.jpg';
 import { soundManager } from '../utils/audio';
 
 interface WindowModalProps {
@@ -84,6 +85,20 @@ export const WindowModal: React.FC<WindowModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
             {/* Left: Window View & Ornament Clue */}
             <div className="space-y-3">
+              {/* Window Photo */}
+              <div className="relative rounded-xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-950 aspect-[4/3]">
+                <img
+                  src={windowImg}
+                  alt="嶺東中學校園鐘樓窗景"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 right-3 text-xs text-slate-300 font-medium">
+                  由 802 班窗台遠眺校園指標性「嶺東鐘樓」
+                </div>
+              </div>
+
               {/* Campus window scenery container */}
               <div className="p-4 rounded-xl bg-gradient-to-b from-sky-900 via-amber-950/40 to-slate-900 border-2 border-slate-700 shadow-md relative overflow-hidden">
                 <div className="flex items-center justify-between border-b border-sky-750/60 pb-2 mb-3">
