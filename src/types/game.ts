@@ -1,4 +1,15 @@
-export type RoomArea = 'classroom' | 'desk' | 'blackboard' | 'window' | 'bookshelf' | 'door';
+export type RoomArea =
+  | 'classroom'
+  | 'desk'
+  | 'blackboard'
+  | 'podium'
+  | 'window'
+  | 'bookshelf'
+  | 'bulletin'
+  | 'lockers'
+  | 'cleaning'
+  | 'science'
+  | 'door';
 
 export interface InventoryItem {
   id: string;

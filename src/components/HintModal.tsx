@@ -60,22 +60,37 @@ export const HintModal: React.FC<HintModalProps> = ({
 
         {/* Puzzle Selector Bar */}
         <div className="px-5 py-3 border-b border-slate-800 bg-slate-950/60 overflow-x-auto flex gap-2">
-          {Object.entries(PUZZLES).map(([key, puzzle]) => (
-            <button
-              key={key}
-              onClick={() => {
-                soundManager.playClick();
-                setSelectedPuzzleKey(key);
-              }}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
-                selectedPuzzleKey === key
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                  : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              {puzzle.title.split(' ')[0]}
-            </button>
-          ))}
+          {Object.entries(PUZZLES).map(([key, puzzle], index) => {
+            const shortTitles: Record<string, string> = {
+              desk_box: '1. 課桌字謎',
+              blackboard_safe: '2. 黑板保險箱',
+              podium_tablet: '3. 講台平板',
+              window_view: '4. 鐘樓窗台',
+              bookshelf_stationery: '5. 圖書文具櫃',
+              bulletin_board: '6. 公佈欄值日',
+              lockers_mystery: '7. 置物櫃方位',
+              cleaning_corner: '8. 清潔角天平',
+              science_corner: '9. 生態觀察箱',
+              exit_door: '10. 教室大門',
+            };
+            const label = shortTitles[key] || `${index + 1}. ${puzzle.title.split(' ')[0]}`;
+            return (
+              <button
+                key={key}
+                onClick={() => {
+                  soundManager.playClick();
+                  setSelectedPuzzleKey(key);
+                }}
+                className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
+                  selectedPuzzleKey === key
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                    : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Hints Content */}

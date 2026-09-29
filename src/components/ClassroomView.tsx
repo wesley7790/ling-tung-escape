@@ -23,60 +23,120 @@ export const ClassroomView: React.FC<ClassroomViewProps> = ({
     {
       id: 'desk' as RoomArea,
       key: 'desk_box',
-      name: '學生課桌椅',
+      name: '1. 學生課桌椅',
       nameEn: 'Student Desk',
-      description: '桌上有一本翻開的作業與一個帶有滾輪的橘色密碼盒。',
-      descriptionEn: 'An open notebook and an orange lockbox with 4 dials.',
+      description: '桌上有殘留作業與英文單字字母數運算謎題。',
+      descriptionEn: 'An open quiz sheet with letter length and vowel subtraction.',
       icon: 'desk',
-      badge: '密碼盒 (Orange Box)',
+      badge: '橘色密碼盒 (Orange Box)',
       solved: !!solvedPuzzles.desk_box,
-      pos: 'bottom-[18%] left-[16%]',
+      pos: 'bottom-[18%] left-[24%]',
     },
     {
       id: 'blackboard' as RoomArea,
       key: 'blackboard_safe',
-      name: '黑板與行事曆',
-      nameEn: 'Blackboard & Schedule',
-      description: '寫著嶺東校訓與週課表，右下方有一個暗格保險箱。',
-      descriptionEn: 'Ling Tung motto and weekly schedule with a wall safe.',
+      name: '2. 黑板與行事曆',
+      nameEn: 'Blackboard & Safe',
+      description: '寫著嶺東校訓，便利貼隱藏自然科學與日曆推理。',
+      descriptionEn: 'Science, weekday, and anatomy logic near the blackboard.',
       icon: 'blackboard',
-      badge: '保險箱 (Wall Safe)',
+      badge: '暗格保險箱 (Wall Safe)',
       solved: !!solvedPuzzles.blackboard_safe,
-      pos: 'top-[30%] left-[45%]',
+      pos: 'top-[26%] left-[44%]',
+    },
+    {
+      id: 'podium' as RoomArea,
+      key: 'podium_tablet',
+      name: '3. 講台智慧平板',
+      nameEn: 'Podium Tablet',
+      description: '老師上課用的觸控平板，鎖定畫面有等差數列與常識題。',
+      descriptionEn: 'Math sequence and unit vocabulary on the smart tablet.',
+      icon: 'podium',
+      badge: '智慧平板 (Smart Tablet)',
+      solved: !!solvedPuzzles.podium_tablet,
+      pos: 'bottom-[34%] left-[45%]',
     },
     {
       id: 'window' as RoomArea,
       key: 'window_view',
-      name: '教室窗台',
+      name: '4. 教室鐘樓窗台',
       nameEn: 'Campus Window',
-      description: '遠眺嶺東中學校園鐘樓風景，窗台有造型掛飾與收納盒。',
-      descriptionEn: 'View of Ling Tung Clock Tower with window hangings.',
+      description: '遠眺嶺東鐘樓，結合早自習時針、幾何圓與放學鐘。',
+      descriptionEn: 'Morning assembly hour, circle symbol, and dismissal bell.',
       icon: 'window',
-      badge: '窗台收納 (Window Box)',
+      badge: '窗台收納盒 (Window Box)',
       solved: !!solvedPuzzles.window_view,
       pos: 'top-[26%] right-[22%]',
     },
     {
       id: 'bookshelf' as RoomArea,
       key: 'bookshelf_stationery',
-      name: '班級圖書角',
-      nameEn: 'Reading Bookshelf',
-      description: '擺放英文課外書與收納四色文具用品的木質密碼櫃。',
-      descriptionEn: 'English storybooks and colored stationery cabinet.',
+      name: '5. 班級圖書角',
+      nameEn: 'Stationery Cabinet',
+      description: '四色文具櫃，需推理桌邊、週二字母、半打與手指數。',
+      descriptionEn: 'Colored stationery cabinet: square sides, spelling, dozen.',
       icon: 'bookshelf',
-      badge: '文具櫃 (Cabinet)',
+      badge: '色彩文具櫃 (Cabinet)',
       solved: !!solvedPuzzles.bookshelf_stationery,
-      pos: 'bottom-[22%] right-[12%]',
+      pos: 'bottom-[22%] right-[14%]',
+    },
+    {
+      id: 'bulletin' as RoomArea,
+      key: 'bulletin_board',
+      name: '6. 後方公佈欄',
+      nameEn: 'Bulletin Board',
+      description: '每週值日生排班表，需拼出代表責任的四字母單字。',
+      descriptionEn: 'Weekly duty roster and 4-letter alphabet rotary lock.',
+      icon: 'bulletin',
+      badge: '值日生謎題 (Duty Box)',
+      solved: !!solvedPuzzles.bulletin_board,
+      pos: 'top-[36%] right-[38%]',
+    },
+    {
+      id: 'lockers' as RoomArea,
+      key: 'lockers_mystery',
+      name: '7. 學生置物櫃',
+      nameEn: 'Student Locker',
+      description: '四方十字方向感應鎖，依據教室東西南北方位地圖導引。',
+      descriptionEn: 'Compass navigation directions: North, East, South, West.',
+      icon: 'lockers',
+      badge: '方位方向鎖 (D-Pad Lock)',
+      solved: !!solvedPuzzles.lockers_mystery,
+      pos: 'bottom-[24%] left-[64%]',
+    },
+    {
+      id: 'cleaning' as RoomArea,
+      key: 'cleaning_corner',
+      name: '8. 衛生清潔角',
+      nameEn: 'Cleaning Corner',
+      description: '打掃工具車旁的天平，推算水杯、水桶與水箱容積等式。',
+      descriptionEn: 'Mass & volume balance puzzle: cup, bucket, water tank.',
+      icon: 'cleaning',
+      badge: '天平容積秤 (Balance Scale)',
+      solved: !!solvedPuzzles.cleaning_corner,
+      pos: 'bottom-[16%] right-[38%]',
+    },
+    {
+      id: 'science' as RoomArea,
+      key: 'science_corner',
+      name: '9. 自然生態角',
+      nameEn: 'Science Vivarium',
+      description: '窗邊昆蟲與標本箱，推算昆蟲、蜘蛛、蛇與四足動物腳數。',
+      descriptionEn: 'Creature anatomy: counting legs of ant, spider, snake, dog.',
+      icon: 'science',
+      badge: '生態觀察箱 (Vivarium Lock)',
+      solved: !!solvedPuzzles.science_corner,
+      pos: 'top-[44%] right-[16%]',
     },
     {
       id: 'door' as RoomArea,
       key: 'exit_door',
-      name: '教室大門',
-      nameEn: 'Exit Door',
-      description: '通往走廊與校門的大門，安裝了電子晶片鎖與雙孔鑰匙插槽。',
-      descriptionEn: 'The locked gate to freedom with RFID scanner.',
+      name: '10. 教室大門門禁',
+      nameEn: 'Exit Gate',
+      description: '終極通關大門！需組裝黃金鑰匙、感應磁卡與考核邏輯題。',
+      descriptionEn: 'The locked gate to freedom with 3-question English logic quiz.',
       icon: 'door',
-      badge: '大門門禁 (Exit Gate)',
+      badge: '終極門禁 (Exit Gate)',
       solved: false,
       pos: 'top-[44%] left-[10%]',
     },
@@ -89,15 +149,15 @@ export const ClassroomView: React.FC<ClassroomViewProps> = ({
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="text-amber-400 font-bold text-xs uppercase font-mono tracking-wider">
-              MISSION BRIEFING · 任務說明
+              MISSION BRIEFING · 十大邏輯解謎任務
             </span>
             <span className="text-slate-500 text-xs">·</span>
             <span className="text-xs text-slate-400">星期五下午 5:00 放學鐘響</span>
           </div>
           <h2 className="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2">
-            <span>「我想放學回家！」嶺東中學國中部 802 班大脫逃</span>
+            <span>「我想放學回家！」嶺東中學國中部 802 班大脫逃 (十題邏輯挑戰版)</span>
             <button
-              onClick={() => soundManager.speak('Welcome to Ling Tung High School Classroom 802. Friday five o\'clock! Solve the English puzzles to open the door and go home!')}
+              onClick={() => soundManager.speak('Welcome to Ling Tung High School Classroom 802. Friday five o\'clock! Solve all ten English logic puzzles to open the door and go home!')}
               className="text-slate-400 hover:text-amber-400 transition-colors cursor-pointer"
               title="聆聽英文任務語音"
             >
@@ -105,9 +165,9 @@ export const ClassroomView: React.FC<ClassroomViewProps> = ({
             </button>
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-            放學鐘聲已經響起，但 802 班英文老師把教室門給鎖上了！為了回家度過美好週末，請調查教室四個角落，解開國二生活英文與邏輯推理謎題，各題答案不直接顯示，需動腦思考推導出數值。蒐集
-            <strong className="text-amber-400"> 4 枚黃金鑰匙碎片</strong> 與
-            <strong className="text-emerald-400"> 大門磁卡</strong>，解開電子門禁逃脫！
+            放學鐘聲已經響起，教室門被電子門禁鎖上了！請調查教室內全部 <strong className="text-amber-400">10 個調查站點</strong>，運用國二英文單字、生活常識、數列規律、方位與自然科學進行純邏輯推理。蒐集
+            <strong className="text-amber-400"> 8 枚黃金鑰匙碎片</strong> 與
+            <strong className="text-emerald-400"> RFID 大門磁卡</strong>，回答門禁邏輯題逃脫回家！
           </p>
         </div>
 
@@ -116,7 +176,7 @@ export const ClassroomView: React.FC<ClassroomViewProps> = ({
           <div className="text-right">
             <span className="text-[11px] text-slate-400 block">黃金鑰匙碎片</span>
             <span className="font-mono font-bold text-amber-400 text-sm">
-              {keyFragmentsCount}/4 碎片
+              {keyFragmentsCount}/8 碎片
             </span>
           </div>
           <div className="w-px h-8 bg-slate-800 mx-1" />

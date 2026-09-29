@@ -31,7 +31,7 @@ export const DoorModal: React.FC<DoorModalProps> = ({
 
   if (!isOpen) return null;
 
-  const isKeyComplete = keyFragmentsCount >= 4;
+  const isKeyComplete = keyFragmentsCount >= 8;
 
   const handleInsertKey = () => {
     if (!isKeyComplete) return;
@@ -127,7 +127,7 @@ export const DoorModal: React.FC<DoorModalProps> = ({
                   <div className="flex items-center gap-2">
                     <Key className={`w-4 h-4 ${isKeyComplete ? 'text-amber-400' : 'text-slate-500'}`} />
                     <span className={isKeyComplete ? 'text-slate-200' : 'text-slate-400'}>
-                      黃金鑰匙碎片 ({keyFragmentsCount}/4)
+                      黃金鑰匙碎片 ({keyFragmentsCount}/8)
                     </span>
                   </div>
                   {isKeyComplete ? (
@@ -143,7 +143,7 @@ export const DoorModal: React.FC<DoorModalProps> = ({
                       {isKeyInserted ? '✓ 已插入鑰匙孔' : '組裝並插入鑰匙'}
                     </button>
                   ) : (
-                    <span className="text-[11px] text-slate-500">尚欠缺 {4 - keyFragmentsCount} 枚碎片</span>
+                    <span className="text-[11px] text-slate-500">尚欠缺 {Math.max(0, 8 - keyFragmentsCount)} 枚碎片</span>
                   )}
                 </div>
 

@@ -29,7 +29,7 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
   const handleShare = () => {
     soundManager.playClick();
-    const shareText = `🎉 我花了 ${timeFormatted} 成功逃出《嶺東中學國中部 802 班英文邏輯密室》！\n解開了課桌字謎、黑板自然推理、鐘樓時間幾何與文具櫃邏輯計算，完成了三道大門門禁考驗！\n歡迎嶺東國中部同學們一起來挑戰！`;
+    const shareText = `🎉 我花了 ${timeFormatted} 成功逃出《嶺東中學國中部 802 班英文邏輯密室》！\n解開了課桌字謎、黑板自然、講台平板數列、鐘樓時間、文具櫃幾何、公佈欄職責、置物櫃方位、清潔角天平與生態角足數等全部 10 道英文邏輯謎題！\n歡迎嶺東國中部同學們一起來挑戰！`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(shareText);
       setCopied(true);
@@ -133,7 +133,10 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
                 </button>
               </div>
               <p>
-                ✓ 掌握 14 個國二必考校園文具、時間與日程英文單字 (CEFR A1-A2)。
+                ✓ 掌握 21 個國二必考校園文具、時間、方位與自然英文單字 (CEFR A1-A2)。
+              </p>
+              <p>
+                ✓ 成功破解 10 道英文邏輯思維與實境推理關卡，放學回家！
               </p>
               <p>
                 ✓ 實踐嶺東校訓：<strong>「學以致用、誠以待人」</strong> (Apply what you learn, treat others with sincerity)。
